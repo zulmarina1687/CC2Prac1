@@ -6,25 +6,26 @@ int tam(char *A){
   while(*(A+i)!='\0'){i++;}
   return i;
 }
-void intercambioA(char A[], int t){
+void intercambioA(char cad[], int t){
   char temp;
   for(int i=0;i<t/2;i++){
-    temp=A[i];
-    A[i]=A[t-i-1];
-    A[t-i-1]=temp;
+    temp=cad[i];
+    cad[i]=cad[t-i-1];
+    cad[t-i-1]=temp;
   }
 }
-void intercambioP(char *A, int t){
-  char *temp;
-  char *B=&A[t-1];
-  for(int i=0;i<t/2;i++){
 
-    //*(C1++)=*(C2--);
-    //*(C2--)=*(C1++);
-    *(temp++)=*(A++);
-    *(A++)=*(B--);
-    *(B--)=*(temp++);
-    //*(A++)=*(B++);*/
+void intercambioP(char *cad){
+  char *temp=cad,inter;
+  while(*temp)
+    temp++;
+  temp--;
+  while(temp>cad){
+    inter=*cad;
+    *cad=*temp;
+    *temp=inter;
+    temp--;
+    cad++;
   }
 }
 
@@ -38,7 +39,7 @@ int main(){
   char s1[100] ={"Desarrollo Basado en Plataformas"};
   a=tam(s1);
 	cout<<"Punteros"<<endl;
-  intercambioP(&s1[0],a);
+  intercambioP(&s1[0]);
   cout<<s1<<endl;
 	return 0;
 }
